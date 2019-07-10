@@ -1,0 +1,15 @@
+sudo docker run \
+    --rm \
+    --runtime=nvidia \
+    --name chest_x_rays_dev \
+    -ti \
+	--rm \
+    -e JUPYTER_ENABLE_LAB=yes \
+    -v ~/NIH-Chest-X-rays-Classification:/src \
+    -v /data:/src/data \
+    -p 8890:8890 \
+    -p 4040:4040 \
+    -p 32001:22 \
+    chest_x_rays_dev
+
+jupyter lab --allow-root --port=8890 --ip=0.0.0.0 --NotebookApp.token='root'
